@@ -51,6 +51,7 @@
         "prettier": "^1.19.1"
     },
     "dependencies": {
+        "class-validator": "^0.13.2",
         "mysql2": "^2.3.3",
         "reflect-metadata": "^0.1.13",
         "typeorm": "^0.3.3"
