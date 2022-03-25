@@ -36,5 +36,8 @@
     "homepage": "https://github.com/fortembr/typeorm-db-template-shopify-csv#readme",
     "devDependencies": {
         "nodemon": "^2.0.15"
+    },
+    "dependencies": {
+        "typeorm": "^0.3.3"
     }
 }
