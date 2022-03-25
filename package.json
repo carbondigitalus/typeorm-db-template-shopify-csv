@@ -1,0 +1,37 @@
+{
+    "name": "typeorm-db-template-shopify-csv",
+    "version": "1.0.0",
+    "description": "TypeORM based tool for loading products into a properly formatted MySQL database template. Once products are imported, we can export the database into a CSV file for manual upload to Shopify.",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fortembr/typeorm-db-template-shopify-csv.git"
+    },
+    "keywords": [
+        "database",
+        "db",
+        "csv",
+        "excel",
+        "spreadsheet",
+        "template",
+        "shopify",
+        "products",
+        "list",
+        "import",
+        "export",
+        "mysql",
+        "sql",
+        "type",
+        "typeorm",
+        "format"
+    ],
+    "author": "Fort Embr",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/fortembr/typeorm-db-template-shopify-csv/issues"
+    },
+    "homepage": "https://github.com/fortembr/typeorm-db-template-shopify-csv#readme"
+}
