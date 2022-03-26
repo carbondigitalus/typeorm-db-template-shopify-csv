@@ -17,7 +17,8 @@ import {
     MinLength,
     MaxLength,
     Min,
-    NotContains
+    NotContains,
+    IsIn
 } from 'class-validator';
 import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm';
 import 'reflect-metadata';
@@ -118,7 +119,13 @@ export default class ShopifyCSVTemplate {
 
     @Column({ name: 'Variant Inventory Tracker' })
     @IsString()
-    variantInventoryTracker?: VariantInventoryTracker;
+    @IsIn([
+        VariantInventoryTracker.prototype.Amazon,
+        VariantInventoryTracker.prototype.ShipWire,
+        VariantInventoryTracker.prototype.Shopify,
+        VariantInventoryTracker.prototype._NotTracked
+    ])
+    variantInventoryTracker?: string;
 
     @Column({ name: 'Variant Inventory Qty' })
     @IsNumber()
@@ -128,11 +135,21 @@ export default class ShopifyCSVTemplate {
     @Column({ name: 'Variant Inventory Policy' })
     @IsString()
     @IsNotEmpty()
-    variantInventoryPolicy: VariantInventoryPolicy;
+    @IsIn([
+        VariantInventoryPolicy.prototype.Continue,
+        VariantInventoryPolicy.prototype.Deny
+    ])
+    variantInventoryPolicy: string;
 
     @Column({ name: 'Variant Fulfillment Service' })
     @IsString()
-    variantFulfillmentService: VariantFulfillmentService;
+    @IsIn([
+        VariantFulfillmentService.prototype.AmazonMarketplaceWeb,
+        VariantFulfillmentService.prototype.Manual,
+        VariantFulfillmentService.prototype.ShipWire,
+        VariantFulfillmentService.prototype.WebGistix
+    ])
+    variantFulfillmentService: string;
 
     @Column({ name: 'Variant Price' })
     @IsNotEmpty()
@@ -140,14 +157,14 @@ export default class ShopifyCSVTemplate {
         message:
             'A price must be 12 digits or less. The last 2 digits come after the decimal ($.00) to represent the cents.'
     })
-    variantPrice: PriceCheck;
+    variantPrice: number;
 
     @Column({ name: 'Variant Compare At Price' })
     @Matches(PriceCheck.prototype.Decimal || PriceCheck.prototype.Whole, {
         message:
             'A price must be 12 digits or less. The last 2 digits come after the decimal ($.00) to represent the cents.'
     })
-    variantCompareAtPrice?: PriceCheck;
+    variantCompareAtPrice?: number;
 
     @Column({ name: 'Variant Requires Shipping', default: true })
     @IsBoolean()
@@ -205,11 +222,23 @@ export default class ShopifyCSVTemplate {
 
     @Column({ name: 'Google Shopping / Gender' })
     @IsString()
-    googleShoppingGender?: GoogleShoppingGender;
+    @IsIn([
+        GoogleShoppingGender.prototype.Male,
+        GoogleShoppingGender.prototype.Female,
+        GoogleShoppingGender.prototype.Unisex
+    ])
+    googleShoppingGender?: string;
 
     @Column({ name: 'Google Shopping / Age Group' })
     @IsString()
-    googleShoppingAgeGroup?: GoogleShoppingAgeGroup;
+    @IsIn([
+        GoogleShoppingAgeGroup.prototype.Newborn,
+        GoogleShoppingAgeGroup.prototype.Infant,
+        GoogleShoppingAgeGroup.prototype.Toddler,
+        GoogleShoppingAgeGroup.prototype.Kids,
+        GoogleShoppingAgeGroup.prototype.Adult
+    ])
+    googleShoppingAgeGroup?: string;
 
     @Column({ name: 'Google Shopping / MPN' })
     @IsString()
@@ -227,7 +256,13 @@ export default class ShopifyCSVTemplate {
 
     @Column({ name: 'Google Shopping / Condition' })
     @IsString()
-    googleShoppingCondition?: GoogleShoppingCondition;
+    @IsIn([
+        GoogleShoppingCondition.prototype.New,
+        GoogleShoppingCondition.prototype.Used,
+        GoogleShoppingCondition.prototype.Refurbished,
+        GoogleShoppingCondition.prototype.Damaged
+    ])
+    googleShoppingCondition?: string;
 
     @Column({ name: 'Google Shopping / Custom Product' })
     @IsString()
@@ -260,7 +295,13 @@ export default class ShopifyCSVTemplate {
 
     @Column({ name: 'Variant Weight Unit' })
     @IsString()
-    variantWeightUnit?: VariantWeightUnit;
+    @IsIn([
+        VariantWeightUnit.prototype.Gram,
+        VariantWeightUnit.prototype.KiloGram,
+        VariantWeightUnit.prototype.Ounce,
+        VariantWeightUnit.prototype.Pound
+    ])
+    variantWeightUnit?: string;
 
     @Column({ name: 'Variant Tax Code' }) // shopify plus clients need to research
     @IsString()
@@ -269,11 +310,13 @@ export default class ShopifyCSVTemplate {
 
     @Column({ name: 'Cost Per Item' })
     @IsNumber()
-    costPerItem?: PriceCheck;
+    @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
+    costPerItem?: number;
 
     @Column({ name: 'Price / International' })
     @IsNumber()
-    priceInternational?: PriceCheck;
+    @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
+    priceInternational?: number;
 
     @Column({ name: 'Compare At Price / International' })
     @IsString()
@@ -282,5 +325,10 @@ export default class ShopifyCSVTemplate {
     @Column({ name: 'Status', default: ProductStatus.prototype.Active })
     @IsString()
     @IsNotEmpty()
-    status: ProductStatus;
+    @IsIn([
+        ProductStatus.prototype.Active,
+        ProductStatus.prototype.Archived,
+        ProductStatus.prototype.Draft
+    ])
+    status: string;
 }
