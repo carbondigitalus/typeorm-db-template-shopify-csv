@@ -1,10 +1,15 @@
 // NPM Modules
+const dotenv = require('dotenv');
 const tsDBConnect = require('typeorm');
 require('reflect-metadata');
 
 // imports
 import { ShopifyCSVTemplate } from './db/entity';
 
+// Enable Config File
+dotenv.config({
+    path: './config.env'
+});
 
 // Connect to MySQL DB
 tsDBConnect
