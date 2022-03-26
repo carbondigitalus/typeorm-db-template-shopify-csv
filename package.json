@@ -2,7 +2,7 @@
     "name": "typeorm-db-template-shopify-csv",
     "version": "1.0.0",
     "description": "TypeORM based tool for loading products into a properly formatted MySQL database template. Once products are imported, we can export the database into a CSV file for manual upload to Shopify.",
-    "main": "app.js",
+    "main": "app.ts",
     "scripts": {
         "start:dev": "NODE_ENV=development nodemon --watch './**/*.ts' --exec 'ts-node' src/server.ts"
     },
