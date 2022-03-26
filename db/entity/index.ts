@@ -1,1 +1,1 @@
-export { default as ShopifyCSVTemplate } from './csv-template-shopify';
+export { default as ShopifyCSVTemplate } from './ShopifyCSVTemplate';
