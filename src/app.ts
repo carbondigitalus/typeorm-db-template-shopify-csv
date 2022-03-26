@@ -27,4 +27,4 @@ tsDBConnect
         // here you can start to work with your entities
         console.log('MySQL Database Connection Status: success');
     })
-    .catch((error) => console.log(error));
+    .catch((error: any) => console.log(error));
