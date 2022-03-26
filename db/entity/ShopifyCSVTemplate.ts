@@ -22,3 +22,15 @@ import {
 import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm';
 import 'reflect-metadata';
 
+// Custom Modules
+import {
+    GoogleShoppingAgeGroup,
+    GoogleShoppingCondition,
+    GoogleShoppingGender,
+    PriceCheck,
+    ProductStatus,
+    VariantFulfillmentService,
+    VariantInventoryPolicy,
+    VariantInventoryTracker,
+    VariantWeightUnit
+} from '../../enums';
