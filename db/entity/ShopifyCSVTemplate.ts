@@ -19,3 +19,6 @@ import {
     Min,
     NotContains
 } from 'class-validator';
+import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm';
+import 'reflect-metadata';
+
