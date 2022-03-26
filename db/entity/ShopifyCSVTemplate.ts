@@ -4,3 +4,18 @@
 // Required Field Ref:
 // https://firebearstudio.com/blog/the-ultimate-guide-to-shopify-import.html
 
+// NPM Modules
+import {
+    IsBoolean,
+    IsEmpty,
+    IsInt,
+    IsNotEmpty,
+    IsNumber,
+    IsString,
+    IsUrl,
+    Matches,
+    MinLength,
+    MaxLength,
+    Min,
+    NotContains
+} from 'class-validator';
